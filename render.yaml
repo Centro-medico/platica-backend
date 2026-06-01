@@ -6,20 +6,20 @@ services:
     startCommand: npm start
     envVars:
       - key: TWILIO_ACCOUNT_SID
-        value: ACdee6c5a89302ee6f707d55de2e7617d8
+        sync: false
       - key: TWILIO_AUTH_TOKEN
-        value: 53c90882e531b79f10ecaf338b0b73e8
+        sync: false
       - key: TWILIO_WHATSAPP_NUMBER
-        value: +14155238886
+        sync: false
       - key: CLAUDE_API_KEY
-        value: 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
+        sync: false
       - key: GOOGLE_CALENDAR_API_KEY
-        value: AIzaSyALLGULrbE07StCSchOojc0Y0dp0D7sx70
+        sync: false
       - key: PORT
         value: 3000
       - key: NODE_ENV
         value: production
       - key: SUPABASE_URL
-        value: https://nldyilmfiruréctorgvc.supabase.co/rest/v1/
+        sync: false
       - key: SUPABASE_KEY
-        value: sb_publishible_KVselmGmUlQyWoLsPtEoA_BAmuUT
+        sync: false
