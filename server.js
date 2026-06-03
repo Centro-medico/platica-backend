@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const twilio = require('twilio');
 const Anthropic = require('@anthropic-ai/sdk');
+const fs = require('fs');
+const path = require('path');
 const { agendarCita, obtenerHorasDisponibles } = require('./googleCalendar');
 const {
   obtenerOCrearPaciente,
@@ -30,6 +32,67 @@ const twilioClient = twilio(
 const anthropic = new Anthropic({
   apiKey: process.env.CLAUDE_API_KEY
 });
+
+// ============================================
+// CARGAR INFORMACIÓN DEL CONSULTORIO
+// ============================================
+let consultorioInfo = null;
+let systemPrompt = null;
+
+function cargarInformacionConsultorio() {
+  try {
+    const filePath = path.join(__dirname, 'consultorio-info.json');
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    consultorioInfo = JSON.parse(fileContent);
+
+    // Crear prompt dinámico basado en la información actualizada
+    systemPrompt = generarSystemPrompt(consultorioInfo);
+    console.log('✅ Información del consultorio cargada correctamente');
+  } catch (error) {
+    console.warn('⚠️ Error al cargar información del consultorio:', error.message);
+    // Usar prompt por defecto si no puede cargar
+    systemPrompt = `Eres un asistente de un consultorio médico. Responde de forma amable y profesional en español.`;
+  }
+}
+
+function generarSystemPrompt(info) {
+  if (!info) return '';
+
+  const servicios = info.servicios
+    ? info.servicios.map(s => `- ${s.nombre}: $${s.precio.toFixed(2)} (${s.preparacion})`).join('\n')
+    : '';
+
+  const horarios = info.horarios ? `
+Horarios:
+- Lunes a Viernes: ${info.horarios.lunes_viernes_manana} y ${info.horarios.lunes_viernes_tarde}
+- Sábado: ${info.horarios.sabado}
+- Domingos: ${info.horarios.domingo}
+  ` : '';
+
+  return `Eres un asistente inteligente del ${info.nombre_consultorio || 'consultorio médico'}. Tu objetivo es ayudar a los pacientes respondiendo sus preguntas sobre servicios, precios, horarios, preparación de estudios, y ayudándolos a agendar citas.
+
+INFORMACIÓN DEL CONSULTORIO:
+- Nombre: ${info.nombre_consultorio}
+- Ubicación: ${info.ubicacion}
+- Teléfono: ${info.telefono}
+- Email: ${info.email}
+${horarios}
+
+SERVICIOS Y PRECIOS:
+${servicios}
+
+IMPORTANTE:
+1. Responde en ESPAÑOL de forma amable y profesional
+2. Si el paciente quiere agendar, solicita: nombre, teléfono, servicio, fecha y hora
+3. Si no sabes algo, sugiere llamar a ${info.telefono}
+4. Nunca des diagnósticos médicos, recomienda consultar con especialistas
+5. Resalta que tenemos especialistas disponibles
+
+NOTA: La información se actualiza automáticamente desde el archivo consultorio-info.json`;
+}
+
+// Cargar información al iniciar
+cargarInformacionConsultorio();
 
 // ============================================
 // RUTA DE PRUEBA
@@ -62,6 +125,10 @@ app.post('/webhook/whatsapp', async (req, res) => {
 
     // Llamar Claude API para procesar el mensaje
     console.log('🤖 Llamando Claude API...');
+
+    // Recargar información por si fue actualizada
+    cargarInformacionConsultorio();
+
     const respuesta = await anthropic.messages.create({
       model: 'claude-3-5-sonnet-20241022',
       max_tokens: 1024,
@@ -71,14 +138,7 @@ app.post('/webhook/whatsapp', async (req, res) => {
           content: String(mensaje).trim() // Asegurar que es string y limpiar espacios
         }
       ],
-      system: `Eres un asistente de un consultorio médico.
-      Responde de forma amable y profesional en español.
-      Si el paciente quiere agendar una cita, extrae:
-      - Nombre del paciente
-      - Fecha deseada (YYYY-MM-DD)
-      - Hora (HH:MM)
-      - Razón de la consulta
-      Y responde: "Entendido, voy a agendar tu cita para [fecha] a las [hora]".`
+      system: systemPrompt // Usar el prompt dinámico que incluye la información actualizada
     });
 
     const textoRespuesta = respuesta.content[0].text;
