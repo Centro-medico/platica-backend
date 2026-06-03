@@ -1,0 +1,94 @@
+{
+  "nombre_consultorio": "Consultorio de especialidades médicas Dra. Norys Rodríguez",
+  "directora": "Dra. Norys del Rosario Rodríguez Vázquez",
+  "ubicacion": "Avenida 9 de octubre y Parrales, Paján, Manabí",
+  "telefono": "+593 96 943 8199",
+  "email": "centromedico.nrdguez@gmail.com",
+
+  "horarios": {
+    "lunes_viernes_manana": "8:00 AM - 12:00 PM",
+    "lunes_viernes_tarde": "2:00 PM - 5:00 PM",
+    "sabado": "8:00 AM - 12:00 PM",
+    "domingo": "Cerrado",
+    "dias_festivos": "8:00 AM - 12:00 PM (excepto domingos)",
+    "resumen": "Lunes a viernes: 8 AM a 12 PM y 2 PM a 5 PM. Sábado: 8 AM a 12 PM. Domingos y feriados en domingo: Cerrado"
+  },
+
+  "equipo_medico": [
+    {
+      "cargo": "Directora",
+      "nombre": "Dra. Norys Rodríguez",
+      "especialidad": "Especialista en Medicina General Integral, Master en Ecografías"
+    },
+    {
+      "cargo": "Médico General",
+      "especialidad": "Medicina General"
+    },
+    {
+      "cargo": "Especialista",
+      "especialidad": "Medicina General Integral, Diplomado en Ozonoterapia y otros tratamientos"
+    },
+    {
+      "cargo": "Licenciada en Enfermería",
+      "especialidad": "Curas y tratamientos médicos especializados"
+    }
+  ],
+
+  "requisitos_pacientes": {
+    "documento_requerido": "Cédula de identidad",
+    "remision": "Si viene recomendado por otro médico, debe traer la remisión al consultorio",
+    "informacion_adicional": "Presentarse a solicitar servicios con documentación requerida"
+  },
+
+  "servicios": [
+    {"nombre": "ABDOMEN RENAL", "precio": 30.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Riñones"},
+    {"nombre": "ABDOMEN SUPERIOR", "precio": 20.00, "preparacion": "SE REALIZA EN AYUNAS", "se_revisa": "Hígado, vesícula, riñones, bazo y páncreas"},
+    {"nombre": "ABDOMEN-APENDICE", "precio": 30.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Apéndice"},
+    {"nombre": "ABDOMINAL Y PELVICO", "precio": 40.00, "preparacion": "SE REALIZA CON VEJIGA LLENA", "se_revisa": "Vejiga, útero y ovarios (mujeres) o vejiga y próstata (hombres)"},
+    {"nombre": "ABDOMINAL Y PELVICO (NIÑOS)", "precio": 30.00, "preparacion": "CON VEJIGA LLENA", "se_revisa": "Abdomen y pelvis"},
+    {"nombre": "CAMBIO DE SONDA VESICAL (CON MATERIAL)", "precio": 15.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Sonda vesical"},
+    {"nombre": "CAMBIO DE SONDA VESICAL (SIN MATERIAL)", "precio": 10.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Sonda vesical"},
+    {"nombre": "COLPOSCOPIA", "precio": 35.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Cuello uterino"},
+    {"nombre": "CONSULTA", "precio": 15.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Consulta general"},
+    {"nombre": "CONSULTA CIRUGIA", "precio": 30.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Consulta quirúrgica"},
+    {"nombre": "CONSULTA GINECOLOGIA", "precio": 15.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Consulta ginecológica"},
+    {"nombre": "CUELLO", "precio": 30.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Cuello"},
+    {"nombre": "DOPLEER ABDOMINAL", "precio": 50.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Flujo sanguíneo abdominal"},
+    {"nombre": "DOPLEER TESTICULAR", "precio": 30.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Flujo sanguíneo testicular"},
+    {"nombre": "EKG", "precio": 25.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Corazón"},
+    {"nombre": "GEMELAR GENETICO", "precio": 100.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Embarazo gemelar con estudio genético"},
+    {"nombre": "GEMELAR NORMAL", "precio": 50.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Embarazo gemelar"},
+    {"nombre": "GENETICO", "precio": 30.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Estudio genético"},
+    {"nombre": "GENETICO - 1ER MARCADOR", "precio": 40.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Primer marcador genético"},
+    {"nombre": "GENETICO - 2DO MARCADOR", "precio": 50.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Segundo marcador genético"},
+    {"nombre": "GENETICO - 3ER TRIMESTRE", "precio": 25.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Tercer trimestre"},
+    {"nombre": "GLICEMIAS", "precio": 3.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Nivel de glucosa"},
+    {"nombre": "INYECCIONES ENDOVENOSAS", "precio": 5.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Inyección endovenosa"},
+    {"nombre": "INYECCIONES MUSCULARES", "precio": 3.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Inyección muscular"},
+    {"nombre": "LAVADO DE OIDOS", "precio": 15.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Oídos"},
+    {"nombre": "MAMAS", "precio": 30.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Mamas"},
+    {"nombre": "OBSTETRICO GENERAL", "precio": 25.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Embarazo"},
+    {"nombre": "OJOS", "precio": 25.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Ojos"},
+    {"nombre": "PAPANICOLAOU", "precio": 15.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Cervix"},
+    {"nombre": "PARTES BLANDAS (ARTICULACION)", "precio": 30.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Articulaciones"},
+    {"nombre": "PARTES BLANDAS (MUSCULAR)", "precio": 25.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Músculos"},
+    {"nombre": "PELVICO", "precio": 20.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Útero y ovarios (mujeres) o vejiga y próstata (hombres)"},
+    {"nombre": "PENE", "precio": 25.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Pene"},
+    {"nombre": "PROSTATA", "precio": 20.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Próstata"},
+    {"nombre": "RENAL", "precio": 20.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Riñones"},
+    {"nombre": "RENAL Y PELVICO", "precio": 30.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Riñones y pelvis"},
+    {"nombre": "RETIRO DE IMPLANTE SUBDERMICO", "precio": 40.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Retiro de implante"},
+    {"nombre": "RODILLA", "precio": 30.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Rodilla"},
+    {"nombre": "SUERO DE VITAMINAS", "precio": 25.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Administración de suero"},
+    {"nombre": "TERAPIA", "precio": 30.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Sesión de terapia"},
+    {"nombre": "DOPLEER CAROTIDE", "precio": 50.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Flujo carotídeo"},
+    {"nombre": "TESTICULOS", "precio": 30.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Testículos"},
+    {"nombre": "TIROIDE", "precio": 30.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Tiroides"},
+    {"nombre": "TRANSRECTAL", "precio": 40.00, "preparacion": "EL PACIENTE TIENE QUE PONERSE UN ENEMA EN LA MAÑANA, ANTES DE LLEGAR AL ESTUDIO", "se_revisa": "Próstata"},
+    {"nombre": "TV EMBARAZO", "precio": 25.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Embarazo por vía transvaginal"},
+    {"nombre": "TV GINECOLOGICO", "precio": 25.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Estudio ginecológico transvaginal"},
+    {"nombre": "CERTIFICADO MEDICO", "precio": 15.00, "preparacion": "NO LLEVA PREPARACION", "se_revisa": "Certificado médico"}
+  ],
+
+  "notas_importantes": "⚠️ IMPORTANTE: Esta información debe ser actualizada regularmente. Para modificar precios, servicios, horarios o cualquier otro dato, editar directamente este archivo JSON sin necesidad de modificar el código del servidor."
+}
