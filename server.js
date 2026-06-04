@@ -29,6 +29,7 @@ const twilioClient = twilio(
 );
 
 // Inicializar Claude
+console.log('🔑 Inicializando Claude con API Key:', process.env.CLAUDE_API_KEY ? '✅ Presente' : '❌ NO PRESENTE');
 const anthropic = new Anthropic({
   apiKey: process.env.CLAUDE_API_KEY
 });
