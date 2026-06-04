@@ -111,6 +111,59 @@ app.get('/', (req, res) => {
 });
 
 // ============================================
+// ENDPOINT DE PRUEBA (Sin Twilio)
+// ============================================
+app.post('/test/whatsapp', async (req, res) => {
+  try {
+    const { message, phone = '+1234567890' } = req.body;
+
+    if (!message) {
+      return res.status(400).json({ error: 'Se requiere el parámetro "message"' });
+    }
+
+    console.log(`\n🧪 TEST: Mensaje recibido: "${message}" desde ${phone}`);
+
+    // Obtener o crear paciente
+    const paciente = await obtenerOCrearPaciente(phone, `Paciente Test ${phone}`);
+    console.log(`👤 Paciente: ${paciente.nombre} (ID: ${paciente.id})`);
+
+    // Llamar Claude API
+    console.log('🤖 Llamando Claude API...');
+    cargarInformacionConsultorio();
+
+    const respuesta = await anthropic.messages.create({
+      model: 'claude-opus-4-1',
+      max_tokens: 1024,
+      messages: [
+        {
+          role: 'user',
+          content: String(message).trim()
+        }
+      ],
+      system: systemPrompt
+    });
+
+    const textoRespuesta = respuesta.content[0].text;
+
+    // Guardar conversación
+    await guardarConversacion(paciente.id, message, textoRespuesta);
+    console.log(`✅ Conversación guardada`);
+    console.log(`📤 Respuesta Claude: ${textoRespuesta}`);
+
+    res.json({
+      success: true,
+      mensaje_entrada: message,
+      respuesta_claude: textoRespuesta,
+      paciente: paciente.nombre,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('Error en test endpoint:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// ============================================
 // WEBHOOK TWILIO WHATSAPP
 // ============================================
 app.post('/webhook/whatsapp', async (req, res) => {
