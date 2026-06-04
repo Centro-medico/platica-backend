@@ -104,8 +104,9 @@ app.get('/', (req, res) => {
   console.log('📊 API KEY en memoria:', process.env.CLAUDE_API_KEY ? '✅ Presente' : '❌ FALTA');
   res.json({
     status: 'Platica Backend está corriendo ✅',
-    version: '1.0.0',
-    apiKeyStatus: process.env.CLAUDE_API_KEY ? 'Presente ✅' : 'FALTA ❌'
+    version: '2.0.0-opus4',
+    apiKeyStatus: process.env.CLAUDE_API_KEY ? 'Presente ✅' : 'FALTA ❌',
+    timestamp: new Date().toISOString()
   });
 });
 
