@@ -311,7 +311,7 @@ async function configurarWebhook() {
 // ============================================
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, async () => {
-  console.log(`🚀 Platica Backend corriendo en puerto ${PORT}`);
+  console.log(`🚀 Platica Backend v2.0 corriendo en puerto ${PORT}`);
   console.log(`📱 Webhook: https://rockfish-sequester-showbiz.ngrok-free.dev/webhook/whatsapp`);
 
   // Intentar configurar webhook
