@@ -160,14 +160,15 @@ app.post('/webhook/whatsapp', async (req, res) => {
       console.log('📅 Solicitud de cita detectada');
     }
 
-    // Enviar respuesta vía WhatsApp usando Messaging Service
-    // Asegurar que numeroPaciente tenga el prefijo whatsapp:
+    // Enviar respuesta vía WhatsApp
     const toNumber = numeroPaciente.startsWith('whatsapp:') ? numeroPaciente : `whatsapp:${numeroPaciente}`;
+    const fromNumber = `whatsapp:${process.env.TWILIO_WHATSAPP_NUMBER}`;
 
-    console.log(`📤 Enviando mensaje a ${toNumber}`);
+    console.log(`📤 Enviando de: ${fromNumber}`);
+    console.log(`📤 Enviando a: ${toNumber}`);
 
     await twilioClient.messages.create({
-      messagingServiceSid: 'MGb0321ff068ba7ba12263a8f74d44eab5',
+      from: fromNumber,
       to: toNumber,
       body: textoRespuesta
     });
