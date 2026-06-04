@@ -161,9 +161,14 @@ app.post('/webhook/whatsapp', async (req, res) => {
     }
 
     // Enviar respuesta vía WhatsApp
+    // Asegurar que numeroPaciente tenga el prefijo whatsapp:
+    const toNumber = numeroPaciente.startsWith('whatsapp:') ? numeroPaciente : `whatsapp:${numeroPaciente}`;
+
+    console.log(`📤 Enviando mensaje a ${toNumber} desde ${process.env.TWILIO_WHATSAPP_NUMBER}`);
+
     await twilioClient.messages.create({
       from: `whatsapp:${process.env.TWILIO_WHATSAPP_NUMBER}`,
-      to: numeroPaciente,
+      to: toNumber,
       body: textoRespuesta
     });
 
