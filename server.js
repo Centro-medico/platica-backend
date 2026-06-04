@@ -99,9 +99,11 @@ cargarInformacionConsultorio();
 // RUTA DE PRUEBA
 // ============================================
 app.get('/', (req, res) => {
+  console.log('📊 API KEY en memoria:', process.env.CLAUDE_API_KEY ? '✅ Presente' : '❌ FALTA');
   res.json({
     status: 'Platica Backend está corriendo ✅',
-    version: '1.0.0'
+    version: '1.0.0',
+    apiKeyStatus: process.env.CLAUDE_API_KEY ? 'Presente ✅' : 'FALTA ❌'
   });
 });
 
